@@ -8,12 +8,12 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.4.css" />
         <link rel="stylesheet" type="text/css" href="css/app.css" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <title>Hello World</title>
+        <title>Boodschap app</title>
     </head>
     <body ng-controller="shopListController">
         <div data-role="page" class="" id="mainPage" render-list-before-show>
             <div data-role="header" class="">
-                <h1>ShopList</h1>
+                <h1>Boodschap app</h1>
             </div>
             <div data-role="content" class="">
                 <form ng-submit="createList()" name="addList" ng-class="{'form-error': formError}">
@@ -26,7 +26,7 @@
                     <ul data-role="listview" data-inset="true" data-split-icon="delete">
                         <li ng-repeat="list in listItems" id="{{list.id}}">
                             <a ng-click="openList(list.id, list.label)">{{list.label}} <span class="ui-li-count" ng-show="list.itmsCount > 0">{{list.itmsDoneCount}}/{{list.itmsCount}}</span></a>
-                            <a ng-click="confirmDelete(list.id, list.label)">Delete List</a>
+                            <a ng-click="confirmDelete(list.id, list.label)">Verwijder lijst</a>
                         </li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
         </div>
         <div data-role="page" class="" id="createList" render-list-before-show>
             <div data-role="header" class="">
-                <h1>Add items to <span id="listCaption">{{activeList.label}}</span></h1>
+                <h1>Product toevoegen <span id="listCaption">{{activeList.label}}</span></h1>
             </div>
             <div data-role="content" class="">
                 <form ng-submit="addItems()" name="addItemsForm" ng-class="{'form-error': formError}" class="add-items">
@@ -44,7 +44,7 @@
                         <input type="submit" value="Add Item" data-icon="plus" data-iconpos="right">
                     </div>
                 </form>
-                <p class="info-text"><a class="ui-btn ui-shadow ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-inline">Info</a> Long press an item to delete it.</p>
+                <p class="info-text"><a class="ui-btn ui-shadow ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-inline">Info</a> druk lang op het product om te verwijderen.</p>
                 <div class="scrollable">
                     <h2 class="sub-header" ng-show="listItems[activeList.id].itmsCount > 0 && listItems[activeList.id].itmsDoneCount < listItems[activeList.id].itmsCount">To Do</h2>
                     <ul data-role="listview" data-inset="true" data-split-icon="check" class="items-list">
@@ -52,7 +52,7 @@
                             <a tap-hold="{{item.name}}">{{item.name}}<span class="ui-li-count" ng-show="item.qty">{{item.qty}}</span></a><a ng-click="done(item.itemId)" ng-class="{checked: item.done}"></a>
                         </li>
                     </ul>
-                    <h2 class="sub-header" ng-show="listItems[activeList.id].itmsDoneCount > 0">Done</h2>
+                    <h2 class="sub-header" ng-show="listItems[activeList.id].itmsDoneCount > 0">Annuleren</h2>
                     <ul data-role="listview" data-inset="true" data-split-icon="check" class="items-list">
                         <li ng-repeat="item in listItems[activeList.id].itemsDone" id="{{item.itemId}}">
                             <a tap-hold="{{item.name}}">{{item.name}}<span class="ui-li-count" ng-show="item.qty">{{item.qty}}</span></a><a ng-click="undo(item.itemId)" ng-class="{checked: item.done}"></a>
@@ -65,10 +65,10 @@
             <div class="modal-bg"></div>
             <div class="modal">
             <h2>Delete: {{deleteItem.name}}</h2>
-            <p>Are you sure you want to delete this item?</p>
+            <p>Product verwijderen?</p>
             <div class="modal-buttons">
-                <a href="#" ng-click="cancelModal()" class="ui-btn ui-mini ui-corner-all ui-shadow ui-btn-inline">Cancel</a>
-                <a href="#" ng-click="deleteList()" class="ui-btn ui-mini ui-corner-all ui-shadow ui-btn-inline" data-transition="flow">Delete</a>
+                <a href="#" ng-click="cancelModal()" class="ui-btn ui-mini ui-corner-all ui-shadow ui-btn-inline">Annuleren</a>
+                <a href="#" ng-click="deleteList()" class="ui-btn ui-mini ui-corner-all ui-shadow ui-btn-inline" data-transition="flow">Verwijderen</a>
             </div>
            </div>
         </div>
